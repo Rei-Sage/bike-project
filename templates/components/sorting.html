@@ -1,0 +1,21 @@
+{% load static %}
+
+<form method="get" action="{% url 'home' id=category.id %}">
+    <div class="flex items-center justify-between space-x-4">
+        <select name="sort" onchange="this.form.submit()" class="px-4 py-2 border rounded-md text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-orange-500">
+            <option value="latest" {% if request.GET.sort == 'latest' %}selected{% endif %}>Сортировка от последнего</option>
+            <option value="price" {% if request.GET.sort == 'price' %}selected{% endif %}>Цены: по возрастанию</option>
+            <option value="-price" {% if request.GET.sort == '-price' %}selected{% endif %}>Цены: по убыванию</option>
+        </select>
+
+        <button id="filter" type="button" onclick="toggleFilter()"
+        class="block lg:hidden p-2 bg-gray-100 rounded-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        <img src="{% static 'img/filter_icon.svg' %}" alt="Filter" class="w-6 h-6" />
+    </button>
+    </div>
+</form>
+{% comment %} <a href='{% url 'create_bike' %}' class="flex items-center gap-2">
+    <button class="p-2 bg-green-200 rounded"><i class="fas fa-th-large"></i>Create</button>
+</a> {% endcomment %}
+
+

@@ -1,0 +1,12 @@
+<div class="paginator">
+    {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}&ordering={{ request.GET.ordering }}">Предыдущая страница</a>
+    {% endif %}
+    
+    <span>Страница {{ products.number }} из {{ products.paginator.num_pages }}</span>
+    
+    {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}&ordering={{ request.GET.ordering }}">Следующая страница</a>
+    {% endif %}
+</div>
+

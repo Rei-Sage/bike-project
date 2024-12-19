@@ -1,0 +1,41 @@
+<div class="paginator">
+    {% if news.has_previous %}
+        <a href="?page={{ news.previous_page_number }}&ordering={{ request.GET.ordering }}">Предыдущая страница</a>
+    {% endif %}
+    
+    <span>Страница {{ news.number }} из {{ news.paginator.num_pages }}</span>
+    
+    {% if news.has_next %}
+        <a href="?page={{ news.next_page_number }}&ordering={{ request.GET.ordering }}">Следующая страница</a>
+    {% endif %}
+</div>
+
+<div class="flex items-center justify-center space-x-1 mt-4">
+    {% if news.has_previous %}
+        <a href="?page=1" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&laquo;&laquo;</a>
+        <a href="?page={{ news.previous_page_number }}" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&laquo;</a>
+    {% else %}
+        <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&laquo;&laquo;</span>
+        <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&laquo;</span>
+    {% endif %}
+
+    {% for num in news.paginator.page_range %}
+        {% if news.number == num %}
+            <span class="px-3 py-1 text-white bg-orange-500 border border-orange-500 rounded">{{ num }}</span>
+        {% elif num >= news.number|add:'-2' and num <= news.number|add:'2' %}
+            <a href="?page={{ num }}" class="px-3 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">{{ num }}</a>
+        {% elif num == 1 or num == news.paginator.num_pages %}
+            <a href="?page={{ num }}" class="px-3 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">{{ num }}</a>
+        {% elif num == news.number|add:'-3' or num == news.number|add:'3' %}
+            <span class="px-3 py-1 text-gray-700">...</span>
+        {% endif %}
+    {% endfor %}
+
+    {% if news.has_next %}
+        <a href="?page={{ news.next_page_number }}" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&raquo;</a>
+        <a href="?page={{ news.paginator.num_pages }}" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&raquo;&raquo;</a>
+    {% else %}
+        <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&raquo;</span>
+        <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&raquo;&raquo;</span>
+    {% endif %}
+</div>

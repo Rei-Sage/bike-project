@@ -1,0 +1,14 @@
+{% load static %}
+<nav class="navBar">
+    <img src="{% static 'img/fonNavBar.png' %}" alt="" class="fon" />
+    <div class="container flex justify-start">
+        <div class="nav_items ml:0 2xl:ml-[80px]">
+            <div class="nav_items_hed_link">
+                <a href="{% url 'main' %}" class="a_href">Главная /</a>
+            </div>
+            <!-- Ссылка на категорию с динамическим параметром сортировки -->
+            <a href="{% url 'home' id=category.id %}?sort={{ request.GET.sort|default:'' }}" class="nav_items_hed_text a_href">{{ category.name }}</a>
+        </div>
+    </div>
+</nav>
+

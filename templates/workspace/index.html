@@ -1,0 +1,38 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-between">
+        <h2 class="mb-5">Welcome to Workspace</h2>
+        <div><a class="btn btn-success" href='{% url 'create_bike' %}'>Create Bikes</a></div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:m-auto sm:w-full gap-4">
+                {% for item in news %}
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition w-290 h-373">
+                <div class="flex justify-between">
+                    <div class="flag">
+                        <img src="{{ item.flag.image.url }}" alt="Flag" />
+                    </div>
+                    <span class="text-sm {% if item.receive_type == 'В наличии'%}text-green-500{% else %}text-red-500{% endif %}">{{ item.receive_type }}</span>
+                </div>
+                <img src="{{ item.image.url }}" alt="Bike Image" class="w-255 h-255 object-cover my-2 rounded">
+                <h3 class="font-semibold w-30 truncate text-lg font-semibold mb-2">{{ item.name }}</h3>
+                <p class="text-gray-500 mb-2">Цена: {{ item.price|floatformat:0 }} ₽</p>
+                <a href="{% url 'detail' id=item.id %}" class="btn btn-primary">View</a>
+                <a href="{% url 'update_bike' id=item.id %}" class="btn btn-warning"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{% url 'delete' id=item.id %}" class="btn btn-danger"><i
+                        class="fa-solid fa-trash"></i></a>
+                </div>
+                {% empty %}
+                <p class="text-center text-gray-500">Нет доступных товаров.</p>
+            {% endfor %}
+           <div class="container">
+            
+           </div>
+           
+    </div>
+    {% include './../components/workspace_pagiantion.html' %}
+
+    </div>
+
+{% endblock content %}

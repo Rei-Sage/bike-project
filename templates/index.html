@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class='bg-gray-100 p-4'>
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-4 ">
+            {% include "components/filter2.html" %}
+            {% include "components/card.html" %}
+        </div>
+
+
+        <div class="flex items-center justify-center space-x-1 mt-4">
+            {% if products.has_previous %}
+                <a href="?page=1" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&laquo;&laquo;</a>
+                <a href="?page={{ products.previous_page_number }}" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&laquo;</a>
+            {% else %}
+                <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&laquo;&laquo;</span>
+                <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&laquo;</span>
+            {% endif %}
+        
+            {% for num in products.paginator.page_range %}
+                {% if products.number == num %}
+                    <span class="px-3 py-1 text-white bg-orange-500 border border-orange-500 rounded">{{ num }}</span>
+                {% elif num >= products.number|add:'-2' and num <= products.number|add:'2' %}
+                    <a href="?page={{ num }}" class="px-3 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">{{ num }}</a>
+                {% elif num == 1 or num == products.paginator.num_pages %}
+                    <a href="?page={{ num }}" class="px-3 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">{{ num }}</a>
+                {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
+                    <span class="px-3 py-1 text-gray-700">...</span>
+                {% endif %}
+            {% endfor %}
+        
+            {% if products.has_next %}
+                <a href="?page={{ products.next_page_number }}" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&raquo;</a>
+                <a href="?page={{ products.paginator.num_pages }}" class="px-2 py-1 text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100">&raquo;&raquo;</a>
+            {% else %}
+                <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&raquo;</span>
+                <span class="px-2 py-1 text-gray-300 bg-white border border-gray-300 rounded cursor-not-allowed">&raquo;&raquo;</span>
+            {% endif %}
+        </div>
+
+         
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% load static %}
+{% block foot %}
+    <script src="https://cdn.tailwindcss.com"></script>
+{% endblock foot %}
+<div class='bg-[#131313]'>
+    <div class="con flex flex-col relative text-white py-12 px-4 lg:px-16" 
+    style="background-image: url('{% static 'img/form.png' %}');">
+        <div class="flex flex-col">
+            <h2 class="text-2xl font-semibold mb-6">ПОДПИШИТЕСЬ НА НАШИ НОВОСТИ</h2>
+            <form class="flex flex-col lg:flex-row  justify-start space-y-4 lg:space-y-0 lg:space-x-4">
+                <input type="email" placeholder="E-mail" class="px-4 py-2 lg:w-80 sm:w-full text-black rounded-md" required>
+                <button type="submit" class="px-6 py-2 bg-orange-600 text-white rounded-md">Подписаться</button>
+            </form>
+        </div>
+        <div class="mt-4 lg:mt-2">
+            <label class="flex ">
+                <input type="checkbox" class="mr-2 sm:size-15">
+                Соглашаюсь на обработку персональных данных
+            </label>
+        </div>
+        <div class="absolute top-0 right-0 hidden lg:block w-1/4 h-full bg-cover bg-no-repeat" style="background-image: url('{% static 'img/pic.svg' %}');"></div>
+
+    </div>
+    
+    <footer class="bg-black text-white py-8">
+        <div class="block con mx-auto px-4 lg:flex lg:justify-between lg:items-start sm:block ">
+            <div>
+                <h3 class="text-xl font-semibold mb-4">WB</h3>
+                <p class="text-sm">
+                    Компания World-bikes<br> специализируется на продаже<br> товаров для велосипедного спорта.
+                </p>
+            </div>
+    
+            <div class="hidden lg:block mb-6 lg:mb-0 lg:w-1/4">
+                <h4 class="text-lg font-semibold mb-4">Каталог</h4>
+                <ul class="space-y-2 text-sm">
+                    {% for item in cat %}
+                    <li>
+                        <a href="{%url 'home' id=item.id %}?sort=price" class="text-sm  hover:text-orange-600">{{ item.name }}</a>
+                    </li>
+                    {% endfor %}
+                    <li><a href="#" class="hover:text-orange-600">Trade-In</a></li>
+                </ul>
+            </div>
+    
+            <div class="hidden lg:block mb-6 lg:mb-0 lg:w-1/4">
+                <h4 class="text-lg font-semibold mb-4">Для клиента</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-orange-600">О нас</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Доставка и оплата</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Блог</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Контакты</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Велоассистанс</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Хранение</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Гарантия</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Info -->
+            <div class="lg:w-1/4">
+                <h4 class="text-lg font-semibold mb-4">Контакты</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>📞 +7 (495) 055-75-86</li>
+                    <li>📞 +7 (965) 142-22-69</li>
+                    <li>📍 г. Москва, ул. Доватора, 7/8 с1</li>
+                    <li>✉️ <a href="mailto:order@world-bike.ru" class="hover:text-orange-600">order@world-bike.ru</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-sm">
+            © 2023 WORLD BIKE. <a href="#" class="hover:text-orange-600">Пользовательское соглашение</a>
+        </div>
+    </footer>
+    </div>
+</div>
+

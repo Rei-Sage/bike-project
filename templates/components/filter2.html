@@ -1,0 +1,84 @@
+{% load static %}
+<aside id="aside" class="aside hidden lg:block w-full lg:w-1/4 bg-white p-4 rounded-lg shadow ">
+    <form method="GET">
+        <div class="mb-4 border-b border-gray-300 pb-3">
+            <label class="flex justify-between items-center font-semibold relative inline-flex cursor-pointer ">
+                <input 
+                type="checkbox" 
+                name="available" 
+                value="IN_STOCK"
+                {% if products.receive_type == "IN_STOCK" %}checked{% endif %}
+                class="sr-only peer mr-10">  
+                <div class="w-12 h-6 bg-gray-300 rounded-full peer-focus:ring-2 peer-focus:ring-orange-500 peer-checked:bg-orange-500"></div>
+                <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>            
+                <span class='pl-1'>Только в наличии</span>
+            </label>
+
+        </div>
+
+        <div class="mb-4 border-b border-gray-300 pb-2">
+            <h3 class="font-semibold mb-2">Категории товара</h3>
+            {% for item in product %}
+            <label class="flex items-center">
+                <input type="checkbox" name="category" value="{{ item.id }}" class="mr-2">
+                {{ item.name }}
+            </label>
+            {% endfor %}
+        </div>
+
+        <div class="mb-4 border-b border-gray-300 pb-2">
+            <h3 class="font-semibold mb-2">Цена</h3>
+            <input type="range" value="0" name="price" min="0" max="1000" id="rangeInput" class="w-full accent-black-500">
+            <div class="flex justify-between text-xs">
+                <p id="rangeValue">0 <span>₽</span></p>
+                <span>900 ₽</span>
+            </div>
+        </div>
+
+        <div class="mb-4 border-b border-gray-300 pb-2">
+            <h3 class="font-semibold mb-2">Бренд</h3>
+            {% for item in brand %}
+            <label class="flex items-center">
+                <input type="checkbox" name="brand" value="{{ item.id }}" class="mr-2">
+                {{ item.name }}
+            </label>
+            {% endfor %}
+        </div>
+
+        <div class="mb-4 border-b border-gray-300 pb-2">
+            <h3 class="font-semibold mb-2">Материал</h3>
+            {% for item in material %}
+            <label class="flex items-center">
+                <input type="checkbox" name="material" value="{{ item.id }}" class="mr-2">
+                {{ item.name }}
+            </label>
+            {% endfor %}
+        </div>
+
+        <div class="mb-4 border-b border-gray-300 pb-2 ">
+            <h3 class="font-semibold mb-2">Цвет</h3>
+            <div class="flex flex-wrap gap-2">
+                {% for item in color %}
+                <label class="w-6 h-6 rounded-full cursor-pointer" style="background-image: url('{{ item.image.url }}'); background-size: cover;">
+                    <input type="checkbox" name="color" value="{{ item.id }}" class="hidden">
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="flex gap-2">
+            <button type="submit" class="w-full bg-orange-500 text-white py-2 mt-4 rounded-lg">
+                Применить фильтры
+            </button>
+        </div>
+    </form>
+</aside>
+
+<script>
+    const rangeInput = document.getElementById("rangeInput");
+    const rangeValue = document.getElementById("rangeValue");
+
+    rangeInput.addEventListener("input", () => {
+        rangeValue.textContent = rangeInput.value+" "+'₽';
+    });
+</script>

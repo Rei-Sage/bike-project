@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "css/header/detail-header.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    {% include "components/nav.html" %}
+    {% comment %} <h1 class='w-full text-center text-xl font-semibold bg-gradient-to-r from-blue-500 via-red-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-600 hover:via-red-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-blue-500'>Создание</h1> {% endcomment %}
+    <div class='p-3'>
+        <form action="{% url 'create_bike' %}" method="POST" enctype="multipart/form-data" class="w-800 container p-4 mt-10 mx-auto bg-gray-800 rounded-lg shadow-lg">
+            {% csrf_token %}
+            <div class="space-y-6 p-15">
+                {% for field in form %}
+                    <div class="space-y-2">
+                        <label for="{{ field.id_for_label }}" class="text-white font-medium">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <p class="text-red-500 text-sm mt-2">
+                                {% for error in field.errors %}
+                                    <span>{{ error }}</span><br>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                    
+                {% endfor %}
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 via-red-500 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-600 hover:via-red-600 hover:to-pink-600 focus:outline-none focus:ring-4 focus:ring-blue-500">
+                    Создать велосипед
+                </button>
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+
+
+</html>

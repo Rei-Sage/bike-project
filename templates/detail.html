@@ -1,0 +1,327 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="{% static "css/header/detail-header.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include "components/nav.html" %}
+    <div class="bg-gray-100 text-gray-800">
+        <div class="container mx-auto pl-5 py-4 text-sm text-gray-600">
+            <a href="{%url 'main'%}" class="hover:text-gray-800">Главная</a> /
+            <a href="{%url 'home' id=product.category.id %}" class="hover:text-gray-800">{{product.category}}</a> /
+            {{product.name}}
+        </div>
+        <div class="container m-auto lg:hidden sm:block pl-5">
+            <h2 class="text-3xl font-bold mb-2">{{ product.name }}</h2>
+            <div class="mb-4">
+                <p class="text-gray-700">Scott</p>
+                <p class="text-gray-500 text-sm">Артикул: 7655-188</p>
+              </div>
+            <p class="text-sm font-bold {% if product.receive_type == 'В наличии' %}text-green-500{% else %}text-red-500{% endif %}">
+                {{ product.receive_type }}
+            </p>
+
+        </div>
+        
+        <div class="container m-auto grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
+            <div>
+                <img
+                  id="mainImage"
+                  src="{{ product.image.url }}"
+                  alt="Product Image"
+                  class="w-full rounded-lg shadow-lg h-100"
+                />
+                <div class="swiper mt-4">
+                    <div class="swiper-wrapper">
+                        {% for item in image %}
+                        <div class="swiper-slide">
+                          <img
+                            src="{{ item.image.url }}"
+                            alt="Thumbnail {{ forloop.counter }}"
+                            class="w-24 h-24 rounded-lg cursor-pointer border-2 border-transparent hover:border-gray-500 transition opacity-50 hover:opacity-100"
+                            onclick="changeMainImage('{{ item.image.url }}')"
+                          />
+                        </div>
+                        {% empty %}
+                        <p class="w-1/2 mx-auto text-center text-gray-500">Нет других фото</p>
+                        {% endfor %}
+                      </div>
+                      
+              
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                </div>
+              </div>
+
+            <div class='hidden lg:block'>
+                <h2 class="text-3xl font-bold mb-2">{{ product.name }}</h2>
+                <div class="mb-4">
+                    <p class="text-gray-500 text-sm">Scott</p>
+                    <p class="text-gray-500 text-sm">Артикул: 7655-188</p>
+                  </div>
+                <p class=" text-sm {% if product.receive_type == 'В наличии'%}text-green-500{% else %}text-red-500{% endif %} font-bold mb-4">{{ product.receive_type }}</p>
+                
+                <div class="flex items-center mb-4 ">
+                    <span class="text-2xl font-bold text-gray-800 mr-2">{{ product.price|floatformat:0 }} ₽</span>
+                    <span class="text-lg line-through text-gray-400">{{product.price|add:150}} ₽</span>
+                </div>
+                                
+                <p class="mb-4">{{ product.description }}</p>
+                
+                
+                    <div class="mb-4">
+                        <h3 class="font-semibold mb-2">Размер:</h3>
+                        <div class="flex space-x-2">
+                            {% for item in size %}
+                                {% if item.name == product.size.name %}
+                                <button 
+                                    class="px-4 py-2 border rounded hover:bg-gray-200 focus:outline-none focus:ring-2 bg-black text-white" 
+                                    data-size="{{ item.name }}">
+                                    {{ item.name|default:"не указан" }}
+                                </button>
+                                {% else %}
+                                <button 
+                                class="px-4 py-2 border rounded hover:bg-gray-200 focus:outline-none focus:ring-2" 
+                                data-size="{{ item.name }}">
+                                {{ item.name|default:"не указан" }}
+                                </button>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+                
+    
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">Цвет:</h3>
+                    <div class="flex gap-2">
+                        {% for item in color %}
+                        {% if item.name == product.color.name %}
+                        <span class="w-8 h-8 bg-green-500 rounded-full cursor-pointer border flex items-center justify-center" 
+                        title="{{ item.name }}">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="w-full h-full object-cover rounded-full" />
+                        </span>
+                        {% else %}
+                        <span class="w-8 h-8 bg-green-500 rounded-full cursor-pointer border flex items-center justify-center" 
+                              title="{{ item.name }}">
+                            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="w-full h-full object-cover rounded-full" />
+                        </span>
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+    
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="flex items-center border rounded px-3">
+                        <button class="text-lg text-gray-600 hover:text-gray-800 focus:outline-none">-</button>
+                        <input 
+                            type="text" 
+                            value="1" 
+                            class="w-12 text-center border-0 focus:outline-none text-lg font-semibold text-gray-700">
+                        <button class="text-lg text-gray-600 hover:text-gray-800 focus:outline-none">+</button>
+                    </div>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-bold shadow-lg">В корзину</button>
+                </div>
+                
+            </div>
+            </div>
+
+            <div class='lg:hidden sm:block p-10'>
+                <div class="flex items-center mb-4 ">
+                    <span class="text-5xl font-bold text-gray-800 mr-2">{{ product.price|floatformat:0 }} ₽</span>
+                    <span class="text-2xl line-through text-gray-400">{{product.price|add:150}} ₽</span>
+                </div>
+                <p class="mb-4">{{ product.description }}</p>
+                
+                
+                <div class="mb-4">
+                    <h3 class="font-semibold mb-2">Размер:</h3>
+                    <div class="flex space-x-2">
+                        {% for item in size %}
+                            {% if item.name == product.size.name %}
+                            <button 
+                                class="px-4 py-2 border rounded hover:bg-gray-200 focus:outline-none focus:ring-2 bg-black text-white" 
+                                data-size="{{ item.name }}">
+                                {{ item.name|default:"не указан" }}
+                            </button>
+                            {% else %}
+                            <button 
+                            class="px-4 py-2 border rounded hover:bg-gray-200 focus:outline-none focus:ring-2" 
+                            data-size="{{ item.name }}">
+                            {{ item.name|default:"не указан" }}
+                            </button>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            
+
+            <div class="mb-4">
+                <h3 class="font-semibold mb-2">Цвет:</h3>
+                <div class="flex gap-2">
+                    {% for item in color %}
+                    {% if item.name == product.color.name %}
+                    <span class="w-8 h-8 bg-green-500 rounded-full cursor-pointer border flex items-center justify-center" 
+                    title="{{ item.name }}">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="w-full h-full object-cover rounded-full" />
+                    </span>
+                    {% else %}
+                    <span class="w-8 h-8 bg-green-500 rounded-full cursor-pointer border flex items-center justify-center" 
+                          title="{{ item.name }}">
+                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="w-full h-full object-cover rounded-full" />
+                    </span>
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+                
+            </div>
+    
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="flex items-center border rounded px-3">
+                        <button class="text-lg">-</button>
+                        <input type="text" value="1" class="w-12 text-center border-0 focus:outline-none">
+                        <button class="text-lg">+</button>
+                    </div>
+                    <button class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-bold">В корзину</button>
+                </div>
+                </div>
+            </div>
+
+
+ 
+            
+        </div>
+    
+        <div class="container mx-auto p-4">
+            <h3 class="text-xl font-bold mb-4">Описание</h3>
+            <p class="mb-8">{{ product.description }}</p>
+    
+            <h3 class="text-xl font-bold mb-4">Характеристика</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-1 gap-4 pt-2 pb-2 border border-gray-500 rounded-lg">
+                <div class="py-2 p-3 rounded-lg flex items-center">
+                    <span class="w-1/2 font-semibold">Цвет:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.color.name }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex items-center">
+                    <span class="w-1/2 font-semibold">Год:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.year|default:"не указен" }}</span>
+                </div>
+                {% if product.category.id == 1 %}
+                <div class="py-2 p-3 rounded-lg flex items-center">
+                    <span class="w-1/2 font-semibold">Диаметр колеса:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.wheel_diameter|default:"не указан" }}</span>
+                </div>
+                {% endif %}
+
+                <div class="bg-gray-100 py-2 p-3 flex items-center">
+                    <span class="w-1/2 font-semibold">Материал рамы:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.frame_material.name|default:"не указан" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Размер:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.size.name|default:"не указан" }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Страна:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.flag.name|default:"не указан" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Производитель:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.brand.name|default:"не указан" }}</span>
+                </div>
+                {% if product.category.id == 1 %}
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Покрышки:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.tires|default:"не указаны" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Рама:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.frame|default:"не указана" }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Подседельный штырь:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.seatpost|default:"не указан" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Седло:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.saddle|default:"не указано" }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Вилка:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.fork|default:"не указана" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Вынос:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.takeaway|default:"не указан" }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Колеса:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.wheels|default:"не указаны" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Руль:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.handlebar|default:"не указан" }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Тип тормозов:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.brake_system|default:"не указана" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                    <span class="w-1/2 font-semibold">Тормозная система:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.brake_system|default:"не указана" }}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                    <span class="w-1/2 font-semibold">Манетки:</span>
+                    <span class="w-1/2 text-end text-gray-500">{{ product.shifters|default:"не указаны" }}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                  <span class="w-1/2 font-semibold">Система шатунов:</span>
+                  <span class="w-1/2 text-end text-gray-500">{{product.connecting_rod_system}}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                  <span class="w-1/2 font-semibold">Задний переключатель:</span>
+                  <span class="w-1/2 text-end text-gray-500">{{product.rear_derailleur}}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                  <span class="w-1/2 font-semibold">Цепь:</span>
+                  <span class="w-1/2 text-end text-gray-500">{{product.chain}}</span>
+                </div>
+                <div class="bg-gray-100 py-2 p-3 flex">
+                  <span class="w-1/2 font-semibold">Количество скоростей:</span>
+                  <span class="w-1/2 text-end text-gray-500">{{product.num_gears}}</span>
+                </div>
+                <div class="py-2 p-3 rounded-lg flex">
+                  <span class="w-1/2 font-semibold">Гарантия:</span>
+                  <span class="w-1/2 text-end text-gray-500">{{product.warranty_years}}</span>
+                </div>
+                {% endif %}              
+            </div>
+    
+    
+        </div>
+    
+    </div>
+    <div class="container mx-auto p-8">
+        {% include "components/dostavka.html" %}
+        <div class="container overflow-hidden">
+            {% include "components/top-card.html" %}
+        </div>
+    </div>
+    {% include "components/footer.html" %}
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
+
+
+

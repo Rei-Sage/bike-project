@@ -1,0 +1,70 @@
+{% load static %}
+<header class="shadow-md py-4 bg-[#101010] relative top-0 z-50 ">
+
+{% comment %} <header class="shadow-md py-4 bg-[#101010] relative top-0 z-50 "> {% endcomment %}
+    <div class="container mx-auto px-4 flex justify-between 2xl:justify-around items-center">
+        <a href="{%url 'main'%}" class="flex-shrink-0">
+            <img src="{% static 'img/logo.svg' %}" alt="Логотип" class="h-8">
+        </a>
+
+        <nav class="hidden lg:flex space-x-6">
+            <a href="{%url 'main'%}" class="text-white text-sm !hover:text-orange-600">Trade in</a>
+            {% for item in cat %}
+            <a href="{%url 'home' id=item.id %}?sort=price" class="text-white text-sm  !hover:text-orange-600">{{ item.name }}</a>
+            {% endfor %}
+            <a href="{%url 'workspace'%}" class="text-sm text-white !hover:text-orange-600">Workspace</a>
+        </nav>
+
+        <div class="hidden lg:flex items-center space-x-4">
+            <div id="searchBox" class="hidden md:flex items-center">
+                <form method="get" action="" class="lg:flex items-center">
+                    <input type="text" name="search" placeholder="Поиск" value="{{ request.GET.search }}"
+                           class="border border-gray-300 rounded-lg px-2 py-1 text-sm w-48 focus:outline-none focus:ring focus:ring-orange-500">
+                    <button type="submit" class="ml-2">
+                        <img src="{% static 'img/search.svg' %}" alt="Поиск" class="h-6 w-6">
+                    </button>
+                </form>
+            </div>
+            <button aria-label="Профиль">
+                <img src="{% static 'img/user.svg' %}" alt="Пользователь" class="h-6 w-6">
+            </button>
+        </div>
+
+        <button id="burgerButton" onclick="toggleMobileMenu()" class="lg:hidden focus:outline-none">
+            <img src="{% static 'img/burgerMenu.svg' %}" alt="Меню" id="burgerIcon" class="h-6 w-6">
+        </button>
+    </div>
+
+    <div id="mobileMenu" class="absolute hidden w-full bg-[#101010] shadow-lg p-4 top-[70px] right-0 z-50 transform translate-x-full transition-transform duration-200 ease-in-out lg:hidden">
+        <nav class="space-y-2 text-white">
+            <a href="{%url 'main'%}" class="block hover:text-orange-600">Trade in</a>
+            {% for item in cat %}
+            <a href="#" class="block hover:text-orange-600">{{item.name}}</a>
+            {% endfor %}
+            <a href="{%url 'workspace'%}" class="block hover:text-orange-600">Workspace</a>
+        </nav>
+        <form method="get" action="" class="mt-4">
+            <input type="text" name="search" placeholder="Поиск" 
+                   class="border rounded-lg px-3 py-2 w-full text-sm">
+            <button type="submit" class="mt-2 bg-orange-600 text-white w-full py-2 rounded-lg">
+                Поиск
+            </button>
+        </form>
+    </div>
+</header>
+
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const burgerIcon = document.getElementById("burgerIcon");
+
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("translate-x-full"); 
+
+        if (menu.classList.contains("hidden")) {
+            burgerIcon.src = "{% static 'img/burgerMenu.svg' %}"; 
+        } else {
+            burgerIcon.src = "{% static 'img/delete.png' %}"; 
+        }
+    }
+</script>

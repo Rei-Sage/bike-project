@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+*.pyc
+.idea/
+.vscode/
+.venv/
+node_modules/
+.cache/
+pycache/
+/121245

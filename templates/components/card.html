@@ -1,0 +1,30 @@
+{% load static %}
+<main class="w-full md:w-3/4 lg:block md:contents">
+    <div class="flex justify-between items-center mb-4">
+        {% include "components/sorting.html" %}
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 sm:m-auto sm:w-full gap-4">
+        {% if products %}
+        {% for item in products %}
+        <a href="{% url 'detail' item.id %}" class="bey_product">
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition w-290 h-373">
+                <div class="flex justify-between">
+                    <div class="flag">
+                        <img src="{{ item.flag.image.url }}" alt="Flag" />
+                    </div>
+                    <span class="text-sm {% if item.receive_type == 'В наличии'%}text-green-500{% else %}text-red-500{% endif %}">{{ item.receive_type }}</span>
+                </div>
+                <img src="{{ item.image.url }}" alt="Bike Image" class="w-255 h-255 object-cover my-2 rounded">
+                <h3 class="font-semibold w-30 truncate text-lg font-semibold mb-2">{{ item.name }}</h3>
+                <p class="text-gray-500 mb-2">Цена: {{ item.price|floatformat:0 }} ₽</p>
+                <button class="bg-orange-500 text-white py-2 w-full rounded-lg">В корзину</button>
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <p class="text-center text-gray-500">Нет доступных товаров.</p>
+        {% endif %}
+
+        
+    </div>
+</main>

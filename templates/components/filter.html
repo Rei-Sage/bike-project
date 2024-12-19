@@ -1,0 +1,143 @@
+<!-- templates/product_filter.html -->
+
+{% load static %}
+{% comment %} <aside class="aside bg-white shadow-lg rounded-md p-6 mb-8 md:mb-0 lg:p-8">
+    <div class="aside_container">
+      <form class="aside_items" method="get" action="">
+        <div class="flex justify-between items-center mb-4">
+          <h4 class="text-lg font-medium">Фильтр</h4>
+          <img onClick="toggleFilterMobile()" src="{% static 'img/Exit.svg' %}" alt="Exit" class="w-6 h-6 cursor-pointer md:hidden" />
+        </div>
+  
+        <div class="mb-4">
+          <div class="flex items-center">
+            <input type="checkbox" name="in_stock" class="mr-2 form-checkbox text-indigo-500" />
+            <p>Только в наличии</p>
+          </div>
+        </div>
+  
+        <div class="mb-4 md:mb-6 lg:mb-8">
+          <h3 class="text-lg font-medium mb-2">Категории товара</h3>
+          <div class="space-y-2 md:space-y-3 lg:space-y-4">
+            {% for category in categories %}
+            <div class="flex items-center">
+              <input type="radio" name="category" value="{{ category.id }}" {% if category.id == selected_category_id %}checked{% endif %} class="mr-2 form-radio text-indigo-500" />
+              <p>{{ category.name }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+  
+        <div class="mb-4 md:mb-6 lg:mb-8">
+          <h3 class="text-lg font-medium mb-2">Цена</h3>
+          <div class="mb-2">
+            <input type="range" min="0" max="10000" value="{{ price_from }}" name="price_from" class="w-full" />
+            <input type="range" min="0" max="10000" value="{{ price_to }}" name="price_to" class="w-full" />
+          </div>
+          <div class="flex items-center justify-between">
+            <input type="text" name="price_from" value="{{ price_from }}" class="w-full px-2 py-1 border rounded-md" />
+            <span class="mx-2">-</span>
+            <input type="text" name="price_to" value="{{ price_to }}" class="w-full px-2 py-1 border rounded-md" />
+          </div>
+        </div>
+  
+        <div class="mb-4 md:mb-6 lg:mb-8">
+          <h3 class="text-lg font-medium mb-2">Бренд</h3>
+          <div class="space-y-2 md:space-y-3 lg:space-y-4">
+            {% for brand in brands %}
+            <div class="flex items-center">
+              <input type="checkbox" name="brands" value="{{ brand.id }}" {% if brand.id in selected_brands %}checked{% endif %} class="mr-2 form-checkbox text-indigo-500" />
+              <p>{{ brand.name }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+  
+        <div class="mb-4 md:mb-6 lg:mb-8">
+          <h3 class="text-lg font-medium mb-2">Цвет</h3>
+          <div class="flex space-x-2 md:space-x-3 lg:space-x-4">
+            {% for color in colors %}
+            <div class="flex items-center">
+              <input type="radio" name="color" value="{{ color.id }}" {% if color.id == selected_color_id %}checked{% endif %} class="mr-2 form-radio text-indigo-500" />
+              <div class="w-6 h-6 rounded-full" style="background-color: {{ color.name }}"></div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+  
+        <div class="flex justify-between">
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+            Фильтровать
+          </button>
+          <button type="reset" class="text-gray-600 hover:text-gray-800 font-medium py-2 px-4" onclick="resetFilters()">
+            Сбросить фильтры
+          </button>
+        </div>
+      </form>
+    </div>
+  </aside> {% endcomment %}
+
+
+  {% comment %} <aside class="w-full md:w-4/4 bg-white p-4 rounded-lg shadow">
+    <!-- Availability Toggle -->
+    <div class="flex items-center justify-between mb-6">
+        <label class="text-sm font-semibold">Только в наличии</label>
+        <input type="checkbox" class="toggle-checkbox">
+    </div>
+
+    <!-- Categories -->
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Категории товара</h3>
+        <ul class="space-y-2 text-sm">
+            <li><label><input type="checkbox"> Готовые велосипеды</label></li>
+            <li><label><input type="checkbox"> Горные велосипеды</label></li>
+            <li><label><input type="checkbox"> Шоссейные велосипеды</label></li>
+            <li><label><input type="checkbox"> Элек1212ипеды</label></li>
+        </ul>
+    </div>
+
+    <!-- Price Slider -->
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Цена</h3>
+        <input type="range" min="0" max="137000" class="w-full">
+        <div class="flex justify-between text-xs">
+            <span>0 ₽</span>
+            <span>137 000 ₽</span>
+        </div>
+    </div>
+
+    <!-- Brand Filter -->
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Бренд</h3>
+        <ul class="space-y-2 text-sm">
+            <li><label><input type="checkbox"> BMC</label></li>
+            <li><label><input type="checkbox"> Merida</label></li>
+            <li><label><input type="checkbox"> Trek</label></li>
+            <li><label><input type="checkbox"> Scott</label></li>
+        </ul>
+    </div>
+
+    <!-- Frame Material -->
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Материал рамы</h3>
+        <ul class="space-y-2 text-sm">
+            <li><label><input type="checkbox"> Алюминий</label></li>
+            <li><label><input type="checkbox"> Карбон</label></li>
+        </ul>
+    </div>
+
+    <!-- Color Picker -->
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Цвет</h3>
+        <div class="grid grid-cols-5 gap-2">
+            <div class="w-6 h-6 bg-red-500 rounded-full"></div>
+            <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
+            <div class="w-6 h-6 bg-yellow-500 rounded-full"></div>
+            <div class="w-6 h-6 bg-green-500 rounded-full"></div>
+            <!-- Add more color options as needed -->
+        </div>
+    </div>
+
+    <!-- Reset Button -->
+    <button class="w-full py-2 mt-4 text-white bg-gray-800 rounded">Сбросить фильтры</button>
+</aside> {% endcomment %}

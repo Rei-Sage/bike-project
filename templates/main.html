@@ -1,0 +1,595 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/header/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/header/detail-header.css" %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block style %}
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+    {% endblock style %}
+    {% block foot %}
+    
+    {% endblock foot %}
+    {% block header %}
+    
+    {% endblock header %}
+    <link rel="stylesheet" href="{% static "css/header/style.module.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
+    <title>Bikes.kg</title>
+</head>
+<body>
+    {% include "components/main_header.html" %}
+
+    <section class="relative w-full h-[600px] bg-cover bg-center" style="background-image: url('{% static 'img/fon.png' %}');">
+      <div class="container relative h-full">
+      <div class="absolute inset-0 flex flex-col justify-center items-start px-8 md:px-20">
+        <h1 class="text-4xl text-white md:text-5xl font-bold mb-4">
+          ЭЛЕКТРО <br> ВЕЛОСИПЕДЫ
+        </h1>
+        <p class="text-white text-lg mb-6 max-w-lg">
+          Наша компания специализируется на продаже товаров для велосипедного спорта — велосипеды, запчасти, аксессуары и
+          ремонтный инвентарь для активного отдыха.
+        </p>
+        <a
+          href="#"
+          class="px-6 py-2 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 transition"
+        >
+          Подробнее
+        </a>
+      </div>
+      
+
+    
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    </section>
+
+    <div class="w-full bg-[#101010]">
+      <div class="container swiper">
+          <div class="swiper-wrapper">
+            <div class="group swiper-slide bg-[#101010] p-4 shadow-lg relative transition-transform duration-300 hover:scale-105">
+              <h3 class="text-white text-xl font-semibold mb-2">Экстремальное вождение <br>на горном велосипеде</h3>
+              <a
+                href="#"
+                class="text-orange-500 opacity-0 pointer-events-auto group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Подробнее
+              </a>
+            </div>
+            
+            <div class="swiper-slide bg-[#101010] p-4 shadow-lg relative group transition-transform duration-300 hover:scale-105">
+              <h3 class="text-white flex items-center text-xl font-semibold mb-2">Велосипеды<br>для профессионалов</h3>
+          
+              <a 
+                href="#"
+                class="inset-0 flex items-center text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Подробнее
+              </a>
+            </div>
+        
+            <div class="swiper-slide bg-[#101010] p-4 shadow-lg relative group transition-transform duration-300 hover:scale-105">
+              <h3 class="text-white text-xl font-semibold mb-2">Долгая поездка<br>на шоссейном велосипеде</h3>
+              <a
+                href="#"
+                class="inset-0 flex items-start text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Подробнее
+              </a>
+            </div>
+          </div>
+    </div>
+        
+  </div>
+
+
+
+
+    <section class="container mx-auto px-8 md:px-20 py-12">
+        <div class="swiper-container overflow-hidden">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="{% static "img/1.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/2.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/3.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/4.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/5.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/6.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/4.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{% static "img/2.svg" %}" alt="Brand 1" class="h-8">
+                </div>
+          </div>
+        </div>
+    </section>
+    <div class="container mx-auto px-4 py-12">
+        <div class="swiper-container overflow-hidden">
+        {% include "components/top-card.html" %}
+        </div>
+    </div>
+   
+    <div class="container mx-auto px-4 py-12">
+        <div class="w-full">
+          <h1 class="text-3xl lg:text-4xl font-bold mb-8">КАТАЛОГ</h1>
+      
+          <div class="lg:hidden grid grid-cols-2 gap-4">
+            <a href="{% url 'home' id=1 %}" class="col-span-2 h-48 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/bike.png' %}" alt="Велосипед" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+
+            
+            <a href="{% url 'home' id=2 %}" class="col-span-2 h-32 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/trade.png' %}" alt="Trade-In" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a href="{% url 'home' id=3 %}" class="h-32 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/zap.png' %}" alt="Запчасти" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a href="{% url 'home' id=4 %}" class="h-32 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/akses.png' %}" alt="Аксессуары" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a href="{% url 'home' id=5 %}" class="h-32 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/ekip.png' %}" alt="Экипировка" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a href="{% url 'home' id=6 %}" class="h-32 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/velo.png' %}" alt="Велостанки" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+          </div>
+      
+          <div class="hidden lg:grid grid-cols-4 gap-4">
+            <a href="{% url 'home' id=1 %}" class="col-span-4 h-56 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/bike.png' %}" alt="Велосипед" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a  href="{% url 'home' id=2 %}" class="col-span-2 h-56 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/trade.png' %}" alt="Trade-In" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a  href="{% url 'home' id=3 %}" class="col-span-2 h-56 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/zap.png' %}" alt="Запчасти" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a  href="{% url 'home' id=4 %}" class="col-span-2 h-56 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/ekip.png' %}" alt="Экипировка" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a  href="{% url 'home' id=5 %}" class="col-span-1 h-56 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/akses.png' %}" alt="Аксессуары" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+      
+            <a  href="{% url 'home' id=6 %}" class="col-span-1 h-56 relative flex items-center justify-center rounded-lg overflow-hidden bg-black">
+              <img src="{% static 'img/velo.png' %}" alt="Велостанки" class="absolute inset-0 w-full h-full object-cover bg-center">
+            </a>
+          </div>
+        </div>
+    </div>
+      
+    <div class="container mx-auto px-4 py-12">
+      <div class="w-full flex flex-col lg:flex-row justify-between items-start gap-8">
+        <div class="lg:w-1/2">
+          <h1 class="text-3xl lg:text-4xl font-bold leading-tight mb-8">
+            Ничего не сможет <br /> остановить вас
+          </h1>
+        </div>
+        <div class="lg:w-1/2 text-gray-600">
+          <p>
+            Наша компания специализируется на продаже товаров для велосипедного спорта — велосипедов, запасных частей, аксессуаров и различного спортивного инвентаря для активного спорта и отдыха.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="relative w-full h-[240px] 2xl:h-[600px] sm:h-[260px] lg:h-[400px] bg-cover bg-center"
+    style="background-image: url('{% static 'img/frank.png' %}');">
+    </div>
+    <div class="bg-[#2E2E2E] text-white">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 py-8 px-4 md:px-8">
+        <div class="flex flex-col">
+          <div class="flex gap-1">
+            <img src="{% static 'img/di.svg' %}" alt="" class='w-[30px]'>
+            <h3 class="text-lg font-semibold mb-2">Европейские бренды</h3>
+          </div>
+          <p class="text-sm text-gray-400 ">
+            Представляем доставку европейских брендов.
+          </p>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex gap-1">
+            <img src="{% static 'img/di2.svg' %}" alt="" class='w-[30px]'>
+            <h3 class="text-lg font-semibold mb-2">Вечная гарантия</h3>
+          </div>
+          
+          <p class="text-sm text-gray-400 ">
+            На некоторые бренды предоставляется пожизненная гарантия.
+          </p>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex gap-1">
+            <img src="{% static 'img/di3.svg' %}" alt="" class='w-[30px]'>
+            <h3 class="text-lg font-semibold mb-2">Предпродажная настройка</h3>
+          </div>
+          <p class="text-sm text-gray-400 ">
+            Специалисты настроят ваш велосипед идеально.
+          </p>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex gap-1">
+            <img src="{% static 'img/di4.svg' %}" alt="" class='w-[30px]'>
+            <h3 class="text-lg font-semibold mb-2">Доставка за 24 часа</h3>
+          </div>
+          <p class="text-sm text-gray-400 ">
+            Доставляем товары в течение суток по ключевым регионам.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="w-full relative bg-[#101010] py-16">
+      <div class="container mx-auto px-4 ">
+        <div class="flex w-full flex-col lg:flex-row lg:items-start lg:justify-between space-y-8 lg:space-y-0">
+          
+          <div class="flex-1 lg:text-left">
+            <h2 class="text-3xl text-white uppercase font-bold lg:text-4xl">
+              Лучшие модели<br>для зимней<br>езды
+            </h2>
+          </div>
+    
+          <div class="flex-1 w-120">
+            <div class="swiper mySwipero">
+              <div class="swiper-wrapper" style='width:550px'>
+                {% if products %}
+                    {% for item in products|slice:":4"%}
+                        <div class="swiper-slide">
+                            <a href="{% url 'detail' item.id %}" class="bey_product">
+                                <div class="bg-white p-3 rounded-lg shadow hover:shadow-lg transition">
+                                    <div class="flex justify-between">
+                                        <div class="flag">
+                                            <img src="{{ item.flag.image.url }}" alt="Flag" />
+                                        </div>
+                                        <span class="text-sm {% if item.receive_type == 'В наличии' %}text-green-500{% else %}text-red-500{% endif %}">
+                                            {{ item.receive_type }}
+                                        </span>
+                                    </div>
+                                    <img src="{{ item.image.url }}" alt="Bike Image" class="w-255 h-255 object-cover my-2 rounded">
+                                    <h3 class="font-semibold w-30 truncate text-lg font-semibold mb-2">{{ item.name }}</h3>
+                                    <p class="text-gray-500 mb-2">Цена: {{ item.price|floatformat:0 }} ₽</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center text-gray-500">Нет доступных товаров.</p>
+                {% endif %}
+            </div>
+        </div>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+
+    
+    
+
+
+
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-10">Горные велосипеды</h2>
+    </div>
+
+    <div class="container h-auto mx-auto px-4 lg:px-12 flex justify-around flex-col lg:flex-row items-start gap-12 p-15 overflow-hidden ">
+
+    <div class="container flex-1">
+        
+    <div class="block lg:hidden w-full">
+    <div class="container swiper mySwiper overflow-hidden">
+    <div class="swiper-wrapper border-box">
+      <div class="relative w-100 swiper-slide p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Рама</h3>
+        <img src="{% static "img/vali.svg" %}" class='absolute right-[5px] top-[10px]' alt="">
+        <p class="text-sm">
+          It is a long established fact that a reader will be distracted by the readable content of a page.
+        </p>
+      </div>
+      <div class="relative w-100 swiper-slide p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Бортовой компьютер</h3>
+        <img src="{% static "img/vali1.svg" %}" class='absolute right-[5px] top-[10px]' alt="">
+        <p class="text-sm">
+          The point of using lorem ipsum is that it has a more-or-less normal distribution of letters.
+        </p>
+      </div>
+      <div class="relative w-100 swiper-slide p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Трансмиссия</h3>
+        <img src="{% static "img/vali2.svg" %}" class='absolute right-[5px] top-[10px]' alt="">
+        <p class="text-sm">
+          Many desktop publishing packages and web page editors now use lorem ipsum.
+        </p>
+      </div>
+      <div class="relative w-100 swiper-slide p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Оборудование</h3>
+        <img src="{% static "img/vali3.svg" %}" class='absolute right-[5px] top-[10px]' alt="">
+        <p class="text-sm">
+          Contrary to popular belief, lorem ipsum is not simply random text. It has roots in classical literature.
+        </p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+      <div class="hidden w-full lg:grid grid-cols-2 gap-6">
+          <div class="relative items-center w-full h-[210px] p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Рама</h3>
+            <img src="{% static "img/vali.svg" %}" class='absolute right-[15px] top-[10px]' alt="">
+            <p class="text-sm">
+              It is a long established fact that <br>a reader will be distracted by<br>the readable content of a page.
+            </p>
+          </div>
+          <div class="relative w-full h-[210px] p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Бортовой<br>компьютер</h3>
+            <img src="{% static "img/vali1.svg" %}" class='absolute right-[15px] top-[10px]' alt="">
+            <p class="text-sm">
+              The point of using lorem ipsum<br>is that it has a more-or-less<br>normal distribution of letters.
+            </p>
+          </div>
+          <div class="relative w-full h-[210px] p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Трансмиссия</h3>
+            <img src="{% static "img/vali2.svg" %}" class='absolute right-[15px] top-[10px]' alt="">
+
+            <p class="text-sm">
+              Many desktop publishing<br>packages and web page<br>editors now use lorem ipsum.
+            </p>
+          </div>
+          <div class="relative w-full h-[210px] p-6 bg-[#34312D] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2 ">Оборудование</h3>
+            <img src="{% static "img/vali3.svg" %}" class='absolute right-[15px] top-[10px]' alt="">
+
+            <p class="text-sm">
+              Contrary to popular belief,<br>lorem ipsum is not simply<br>random text. It has roots in.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex-1 w-full lg:items-center lg:text-left">
+        <img src="{%static 'img/pic.png'%}" alt="Cyclist" class="rounded-lg shadow-lg mb-6 w-auto h-auto" >
+        <p class="text-gray-600 mb-6">
+          Горный велосипед, несмотря на свое название, часто и активно<br>используется в условиях города, так как обладает рядом<br>характеристик, позволяющих сделать велопрогулку<br>максимально приятной и комфортной.
+        </p>
+        <a href="#" class="bg-orange-500 w-auto text-white px-20 py-3 rounded-lg text-sm font-medium hover:bg-orange-600">
+          Каталог
+        </a>
+        <h1>.</h1>
+      </div>
+    </div>
+
+
+
+    <div class="container mx-auto px-4 py-12">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-10">Преимущества</h2>
+    </div>
+
+    <div class="container items-center h-auto mx-auto px-4 lg:px-12 flex justify-around flex-col lg:flex-row items-start gap-12 p-15 overflow-hidden ">
+
+      <div class="flex-1 w-full h-[460px] lg:items-center lg:text-left">
+        <img src="{%static 'img/hiro.png'%}" alt="Cyclist" class="rounded-lg shadow-lg mb-6 w-auto h- " >
+      </div>
+
+    <div class="container flex-1">
+        
+    <div class="block lg:hidden w-full">
+    <div class="container swiper mySwiper overflow-hidden">
+    <div class="swiper-wrapper border-box">
+      <div class="w-100 swiper-slide p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">БЕСПЛАТНАЯ ДОСТАВКА</h3>
+        <p class="text-sm mb-4">
+          Мы пользуемся всеми популярными видами доставки
+        </p>
+        <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+      </div>
+      <div class="w-100 swiper-slide p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">ОБМЕН И ВОЗВРАТ</h3>
+        <p class="text-sm mb-4">
+          Мы пользуемся всеми популярными видами доставки
+        </p>
+        <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+      </div>
+      <div class="w-100 swiper-slide p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">ДОП. ОБСЛУЖИВАНИЕ</h3>
+        <p class="text-sm mb-4">
+          Мы пользуемся всеми популярными видами доставки
+        </p>
+        <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+      </div>
+      <div class="w-100 swiper-slide p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mb-2">ОНЛАЙН ОПЛАТА</h3>
+        <p class="text-sm mb-4">
+          Мы пользуемся всеми популярными видами доставки
+        </p>
+        <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+      </div>
+    </div>
+    </div>
+    </div>
+
+      <div class="hidden w-full lg:grid grid-cols-2 gap-6">
+          <div class="w-full h-[230px] p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">БЕСПЛАТНАЯ ДОСТАВКА</h3>
+            <p class="text-sm mb-4">
+              Мы пользуемся всеми популярными видами доставки
+            </p>
+            <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+          </div>
+          <div class="w-full h-[230px] p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">ДОП. ОБСЛУЖИВАНИЕ</h3>
+            <p class="text-sm mb-4">
+              Мы пользуемся всеми популярными видами доставки
+            </p>
+            <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+          </div>
+          <div class="w-full h-[230px] p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">ОБМЕН И ВОЗВРАТ</h3>
+            <p class="text-sm mb-4">
+              Мы пользуемся всеми популярными видами доставки
+            </p>
+            <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+          </div>
+          <div class="w-full h-[230px] p-6 bg-[#F57520] text-white rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">ОНЛАЙН ОПЛАТА</h3>
+            <p class="text-sm mb-4">
+              Мы пользуемся всеми популярными видами доставки
+            </p>
+            <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+          </div>
+        </div>
+      </div>
+  
+
+    </div>
+
+
+
+
+
+  
+
+    <div class="container mx-auto px-4 py-12">
+      <div class="swiper-container overflow-hidden">
+      {% include "components/hat.html" %}
+      </div>
+    </div>
+
+
+    <div class="container flex-column mx-auto px-4 w-full py-12">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-8">Последние обзоры</h2>
+
+      <div class="container swiper mySwipers overflow-hidden">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="{% static "img/velo1.png" %}" alt="BMC Klaus 01" class="w-full h-56 object-cover">
+            <div class="p-4 bg-[#101010] text-white">
+              <p class="text-smtext-white mb-1">25.01.2023</p>
+              <p class="text-sm text-orange-400 mb-4">#Обзор</p>
+              <h3 class="text-lg font-semibold mb-4">Первые поездки на новой гоночной ракете Wilier Ultra SLR 100mm XC MTB</h3>
+              <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+            </div>
+          </div>
+          <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="{% static "img/velo2.png" %}" alt="Wilier Ultra SLR" class="w-full h-56 object-cover">
+            <div class="p-4 bg-[#101010] text-white">
+              <p class="text-smtext-white mb-1">24.01.2023</p>
+              <p class="text-sm text-orange-400 mb-4">#Обзор</p>
+              <h3 class="text-lg font-semibold mb-4">Первые поездки на новой гоночной ракете Wilier Ultra SLR 100mm XC MTB</h3>
+              <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+            </div>
+          </div>
+          <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="{% static "img/velo3.png" %}" alt="BMC Fourstroke XC" class="w-full h-56 object-cover">
+            <div class="p-4 bg-[#101010] text-white">
+              <p class="text-smtext-white mb-1">24.01.2023</p>
+              <p class="text-sm text-orange-400 mb-4">#Обзор</p>
+              <h3 class="text-lg font-semibold mb-4">Все новые гоночные велосипеды BMC Fourstroke XC оснащены волшебным...</h3>
+              <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+            </div>
+          </div>
+          <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="{% static "img/velo4.png" %}" alt="BMC Fourstroke XC" class="w-full h-56 object-cover">
+            <div class="p-4 bg-[#101010] text-white">
+              <p class="text-smtext-white mb-1">24.01.2023</p>
+              <p class="text-sm text-orange-400 mb-4">#Обзор</p>
+              <h3 class="text-lg font-semibold mb-4">Все новые гоночные велосипеды BMC Fourstroke XC оснащены волшебным...</h3>
+              <a href="#" class="text-sm no-underline hover:text-orange-500">Подробнее</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="#" class="text-sm font-medium text-gray-700 hover:text-orange-500 no-underline">Показать все</a>
+      </div>
+    </div>
+
+
+
+
+    <div class="container mx-auto pt-[35px]">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-8">Контакты</h2>
+    </div>  
+    <div class="relative w-full h-[200px] 2xl:h-[500px] sm:h-[300px] lg:h-[400px] bg-cover bg-center"
+    style="background-image: url('{% static 'img/map.png' %}');">
+    </div>
+
+
+
+    <div class="container mx-auto px-4 py-4">
+        <div class="w-full">   
+            <div class="py-6 px-4 md:px-16">
+              <div class="w-100 grid grid-cols-2 lg:grid-cols-4 gap-4 items-center text-sm md:text-base">
+                <div class="flex items-center gap-2">
+                    <img src="{% static 'img/smartphone.svg' %}" alt="" class='w-[30px]'>
+                    <span class="text-base sm:text-sm md:text-lg lg:text-base 2xl:text-lg">
+                      +7 (495) 055-75-86 
+                    </span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="{% static 'img/navigation.svg' %}" alt="" class='w-[30px]'>
+                    <span class="text-base sm:text-sm md:text-lg lg:text-base 2xl:text-lg">
+                      г.Москва ул. <br> Домодедова, 7/8 с1</span>
+                  </div>
+                <div class="flex items-center gap-2">
+                    <img src="{% static 'img/mail.svg' %}" alt="" class='w-[30px]'>
+                    <span class="text-base sm:text-sm md:text-lg lg:text-base 2xl:text-lg">
+                      order@world-bike.ru</span>
+                 </div>
+                <div class="flex items-center gap-2">
+                    <img src="{% static 'img/calendar.svg' %}" alt="" class='w-[30px]'>
+                    <span class="text-base sm:text-sm md:text-lg lg:text-base 2xl:text-lg">
+                      Без выходных <br> 10:00-20:00</span>
+                </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    
+
+     {% include "components/footer.html" %}
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="{% static 'js/script.js' %}">
+    </script>
+</body>
+</html>
