@@ -1,9 +1,12 @@
 # created by virtualenv automatically
 *.pyc
-.idea/
+.idea
 .vscode/
-.venv/
+venv
 node_modules/
 .cache/
-pycache/
+__pycache__
 /121245
+media/
+makemigrations/
+db.sqlite3
